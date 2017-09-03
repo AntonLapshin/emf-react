@@ -1,9 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import DM from "./components/DM";
-import FM from "./components/FM";
 import registerServiceWorker from "./registerServiceWorker";
 import createHistory from "history/createBrowserHistory";
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -12,9 +8,10 @@ import { Route } from "react-router";
 import {
   ConnectedRouter,
   routerReducer,
-  routerMiddleware,
-  push
+  routerMiddleware
 } from "react-router-redux";
+
+import App from "./components/App";
 
 const reducers = [];
 const history = createHistory();
@@ -31,11 +28,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <Route exact path="/" component={App} />
-        <Route path="/dm" component={DM} />
-        <Route path="/fm" component={FM} />
-      </div>
+      <Route path="/" component={App} />
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
